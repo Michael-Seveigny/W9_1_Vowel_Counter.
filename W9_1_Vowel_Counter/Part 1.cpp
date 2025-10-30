@@ -24,3 +24,4 @@ int main() {
 	cout << "The number of characters in the string \"" << testString << "\" is: " << characterCount << endl;
 	return 0;
 }
+
