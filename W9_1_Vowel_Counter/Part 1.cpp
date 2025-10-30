@@ -14,6 +14,32 @@ function to int countVowel(string str), and rewrite it to count the number of vo
 in the given str. Vowels are the letters a, e, i, o, and u and their uppercase variants.
 Since this is an intermediate task, you can manually write test strings in the main 
 function as string literals.
+Now that you feel confident that countVowel is working, you’re going to write a command line interface for
+your countVowel function. Strings should be requested from the user via a loop construct for acquiring test
+data. HINT: please refer to the following demonstration program for reading in a string from the user:
+// getline.cpp - John K. Estell - 07 October 2011
+// demo of reading in a string from the keyboard
+#include <iostream>
+#include <string>
+using namespace std;
+int main(void) {
+string input;
+while ( true ) {
+cout << "Enter a string or Q to quit: ";
+getline( cin, input );
+if ( input == "Q" ) break;
+cout << "\"" << input << "\"" << endl; // do something with input
+}
+return 0;
+}
+Example run (with user input indicated with bold italics):
+Enter a string or Q to quit: The quick brown fox jumped over the lazy dog.
+Vowel count: 12
+Enter a string or Q to quit: aeiouAEIOU
+Vowel count: 10
+Enter a string or Q to quit: zxcvbnm
+Vowel count: 0
+Enter a string or Q to quit: Q
 */
 #include <iostream>
 #include <string>
@@ -29,11 +55,14 @@ int countVowel(string str) {
 	}
 	return vowelCount;
 }
-int main() {
-	string testString1 = "Hello, World!";
-	string testString2 = "This is a test string.";
-	cout << "Vowel count in \"" << testString1 << "\": " << countVowel(testString1) << endl;
-	cout << "Vowel count in \"" << testString2 << "\": " << countVowel(testString2) << endl;
+int main(void) {
+	string input;
+	while (true) {
+		cout << "Enter a string or Q to quit: ";
+		getline(cin, input);
+		if (input == "Q") break;
+		cout << "Vowel count: " << countVowel(input) << endl;
+	}
 	return 0;
 }
 
